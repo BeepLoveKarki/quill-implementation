@@ -12,7 +12,7 @@ var mongoose        = require('mongoose');
 var fs              = require('fs');
 var port            = process.env.PORT || 3000;
 //var database        = process.env.DATABASE || process.env.MONGODB_URI || "mongodb://localhost:27017";
-var database        = 'mongodb://baljyoti:'+process.env.ADMIN_PASS+'@quantumhack.cluster-cz3uefblqw46.ap-south-1.docdb.amazonaws.com:27017/participants?ssl=true&replicaSet=rs0&readPreference=secondaryPreferred';
+var database        = 'mongodb://quantumhack:'+process.env.ADMIN_PASS+'@quantumhack.cluster-cz3uefblqw46.ap-south-1.docdb.amazonaws.com:27017/participants?ssl=true&replicaSet=rs0&readPreference=secondaryPreferred';
 var ca = [fs.readFileSync(__dirname + "/keys/rds-combined-ca-bundle.pem")];
 
 var settingsConfig  = require('./config/settings');
