@@ -11,8 +11,8 @@ var morgan          = require('morgan');
 var mongoose        = require('mongoose');
 var fs              = require('fs');
 var port            = process.env.PORT || 3000;
-//var database        = process.env.DATABASE || process.env.MONGODB_URI || "mongodb://localhost:27017";
-var database        = 'mongodb://quantumhack:'+process.env.ADMIN_PASS+'@quantumhack.cluster-cz3uefblqw46.ap-south-1.docdb.amazonaws.com:27017/participants?ssl=true&replicaSet=rs0&readPreference=secondaryPreferred';
+var database        = process.env.DATABASE || process.env.MONGODB_URI || "mongodb://localhost:27017";
+//var database        = 'mongodb://quantumhack:'+process.env.ADMIN_PASS+'@quantumhack.cluster-cz3uefblqw46.ap-south-1.docdb.amazonaws.com:27017/participants?ssl=true&replicaSet=rs0&readPreference=secondaryPreferred';
 var ca = [fs.readFileSync(__dirname + "/keys/rds-combined-ca-bundle.pem")];
 
 var settingsConfig  = require('./config/settings');
@@ -21,7 +21,7 @@ var adminConfig     = require('./config/admin');
 var app             = express();
 
 // Connect to mongodb
-mongoose.connect(database,{
+/*mongoose.connect(database,{
    sslValidate:false,
    sslCA:ca,
    useNewUrlParser: true,
@@ -30,6 +30,11 @@ mongoose.connect(database,{
   function(err, client) {
     if(err)
       throw err;
+});*/
+
+mongoose.connect(database,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 app.use(morgan('dev'));

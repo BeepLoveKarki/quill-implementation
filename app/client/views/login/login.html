@@ -29,7 +29,7 @@
                   required
                 />
               </div>
-              <div class="field">
+              <div class="field" ng-show="showLoginButton">
                 <button id="login-password" type="submit" class="fluid ui login button pa11y-click-login">
                   Login
                 </button>
@@ -63,6 +63,12 @@
           </div>
         </div>
 
+        <div ng-hide="showLoginButton || loginState!=='login'" class="forgot">
+          <div class="ui divider"></div>
+          <a href="javascript:window.location.reload()" ng-click="setLoginState('login')">
+            Login?
+          </a>
+        </div>
         <div class="ui divider"></div>
 
         <div ng-show="loginState === 'login'" class="forgot">
